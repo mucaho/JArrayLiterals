@@ -7,131 +7,75 @@ Why not do `$($(1,2), $(3,4))` and make your life easier?
 
 Example
 -------
-Complex example showing off most features:
+Example showing the benefits of JArrayLiterals:
 ```java
-		Object obj = $($(
-				$(1f, 2f), $(3f, 4f), $(5f, 6f), $(7f, 8f)
-		), $(
-				$(100L), $(200L)
-		), $(
-				"a", "B"
-		), $(
-				$($($($($(2d)))))
-		), $(
-				$($(true), $(true, false), $(false, false, false))
-		), $(
-				$('a', 'c')
-		), $(
-				$S(2,3,4), $S(1,5,6,7,8,9,0)
-		), $(
-				$($, $($null))
-		), $(
-				$B(2,5,6,7,8,9), $B(101,199), $B
-		), $(
-				$($($($($($())))))
-		),  $(
-				$($($($($($B)))))
-		));
+	public static void simpleExample() {
+		Object[] flat = (Object[])
+			$( $b, $(true, false), $($), $S(1,2,3,4), $B(2,3), $('c'), $($null), $, $null );
+		testTypes(flat);
+
+		System.out.println();
 		
-		System.out.println(ArrayShortcuts.toString(obj));
-```
-prints
+		Object[] tediousTempVar = new Object[][]{{}};
+		Object[][] flat2 = new Object[][]{
+				{},
+				{true, false},
+				tediousTempVar,
+				{(short) 1, (short) 2, (short) 3, (short) 4},
+				{(byte) 2, (byte) 3},
+				{'c'},
+				{null},
+				{},
+				null
+		};
+		testTypes(flat2);
+	}
+	
+	private static void testTypes(Object[] arr) {
+		System.out.println(Arrays.deepToString(arr));
+		for (int i=0; i<arr.length; i++) {
+			if (arr[i] != null) {
+				System.out.println(""+i+"th element is typeof "+arr[i].getClass().getSimpleName()+".");
+			} else {
+				System.out.println(""+i+"th element is null.");
+			}
+		}
+		try {
+			testType((Boolean[]) arr[0]);
+			testType((Boolean[]) arr[1]);
+		} catch (ClassCastException e) {
+			System.out.println("Nay :(! Type of array can't be cast Boolean[]!");
+		}
+	}
+	private static void testType(Boolean[] arr) {
+		System.out.println("Yay :)! Type of array can be cast to Boolean[]!");
+	}
 ```
 
-[
- [
-  [1.0F , 2.0F]
-  , 
-  [3.0F , 4.0F]
-  , 
-  [5.0F , 6.0F]
-  , 
-  [7.0F , 8.0F]
- ]
- , 
- [
-  [100L]
-  , 
-  [200L]
- ]
- , 
- [a , B]
- , 
- [
-  [
-   [
-    [
-     [
-      [2.0D]
-     ]
-    ]
-   ]
-  ]
- ]
- , 
- [
-  [
-   [true]
-   , 
-   [true , false]
-   , 
-   [false , false , false]
-  ]
- ]
- , 
- [
-  [a , c]
- ]
- , 
- [
-  [2S , 3S , 4S]
-  , 
-  [1S , 5S , 6S , 7S , 8S , 9S , 0S]
- ]
- , 
- [
-  [
-   []
-   , 
-   [null]
-  ]
- ]
- , 
- [
-  [2B , 5B , 6B , 7B , 8B , 9B]
-  , 
-  [101B , -57B]
-  , 
-  []
- ]
- , 
- [
-  [
-   [
-    [
-     [
-      [
-       []
-      ]
-     ]
-    ]
-   ]
-  ]
- ]
- , 
- [
-  [
-   [
-    [
-     [
-      [
-       []
-      ]
-     ]
-    ]
-   ]
-  ]
- ]
-]
+Gives the output:
+```
+[[], [true, false], [[]], [1, 2, 3, 4], [2, 3], [c], [null], [], null]
+0th element is typeof Boolean[].
+1th element is typeof Boolean[].
+2th element is typeof Object[][].
+3th element is typeof Short[].
+4th element is typeof Byte[].
+5th element is typeof Character[].
+6th element is typeof Void[].
+7th element is typeof Object[].
+8th element is null.
+Yay :)! Type of array can be cast to Boolean[]!
+Yay :)! Type of array can be cast to Boolean[]!
 
+[[], [true, false], [[]], [1, 2, 3, 4], [2, 3], [c], [null], [], null]
+0th element is typeof Object[].
+1th element is typeof Object[].
+2th element is typeof Object[][].
+3th element is typeof Object[].
+4th element is typeof Object[].
+5th element is typeof Object[].
+6th element is typeof Object[].
+7th element is typeof Object[].
+8th element is null.
+Nay :(! Type of array can't be cast Boolean[]!
 ```
