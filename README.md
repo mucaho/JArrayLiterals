@@ -5,6 +5,14 @@ Shortcut methods for creating arrays using array literals.
 No more `new int[][] { {1,2}, {3,4} }` notations which have more boilerplate code than actual data!   
 Why not do `$($(1,2), $(3,4))` and make your life easier?   
 
+Why bother? If you write a lot of parameterized unit tests and you hardcode the test parameters, then JArrayLiterals 
+could help you write parameter data in a concise, dynamic and clean way.
+If your interested in _"parameterised tests that don't suck"_, check out [JUnitParams](http://code.google.com/p/junitparams/)! The shortcut method of that project actually inspired me to 
+make this project.
+
+Check out the example below for identifiying benefits in using this project.
+
+
 Example
 -------
 Example showing the benefits of JArrayLiterals:
@@ -34,12 +42,12 @@ Example showing the benefits of JArrayLiterals:
 	private static void testTypes(Object[] arr) {
 		System.out.println(Arrays.deepToString(arr));
 		for (int i=0; i<arr.length; i++) {
-			if (arr[i] != null) {
+			if (arr[i] != null)
 				System.out.println(""+i+"th element is typeof "+arr[i].getClass().getSimpleName()+".");
-			} else {
+			else
 				System.out.println(""+i+"th element is null.");
-			}
 		}
+		
 		try {
 			testType((Boolean[]) arr[0]);
 			testType((Boolean[]) arr[1]);
@@ -47,6 +55,7 @@ Example showing the benefits of JArrayLiterals:
 			System.out.println("Nay :(! Type of array can't be cast Boolean[]!");
 		}
 	}
+	
 	private static void testType(Boolean[] arr) {
 		System.out.println("Yay :)! Type of array can be cast to Boolean[]!");
 	}
@@ -79,3 +88,7 @@ Yay :)! Type of array can be cast to Boolean[]!
 8th element is null.
 Nay :(! Type of array can't be cast Boolean[]!
 ```
+
+Misc
+----
+The class which contains the shortcut methods and the complete example can be found inside the __src__ folder.
