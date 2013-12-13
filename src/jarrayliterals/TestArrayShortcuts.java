@@ -1,7 +1,6 @@
 package jarrayliterals;
 
 import static jarrayliterals.ArrayShortcuts.*;
-import jarrayliterals.ArrayShortcuts;
 
 public class TestArrayShortcuts {
 
@@ -9,7 +8,8 @@ public class TestArrayShortcuts {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		Object obj = $($(
+		Object[] obj = (Object[]) 
+		$($(
 				$(1f, 2f), $(3f, 4f), $(5f, 6f), $(7f, 8f)
 		), $(
 				$(100L), $(200L)
@@ -33,8 +33,8 @@ public class TestArrayShortcuts {
 				$($($($($($B)))))
 		));
 		
+		
 		System.out.println(ArrayShortcuts.toString(obj));
-
 	}
 
 }

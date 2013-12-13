@@ -81,6 +81,7 @@ public class ArrayShortcuts {
 	private static boolean isPrimitiveNumber(Class<?> clazz) {
 		return PRIMITIVE_NUMBER_TYPES.contains(clazz);
 	}
+	
 
 	/**
 	 * Prints a generic object or generic single-/multi-dimensional array.
@@ -94,7 +95,20 @@ public class ArrayShortcuts {
 	 * @return		String representation of <b>arr</b>
 	 */
 	public static <T> String toString(T arr){
+		return toString(arr, 0);
+	}
+
+	private static String ident(int amount) {
+		String out = "\n";
+		for (int i=0; i<amount; ++i)
+			out += " ";
+
+		return out;
+	}
+
+	private static <T> String toString(T arr, int depth){
 		String out = "";
+
 		if (arr == null) {
 			out += arr;
 		} else if (!arr.getClass().isArray()){
@@ -104,23 +118,20 @@ public class ArrayShortcuts {
 				out += objClass.getSimpleName().substring(0, 1);
 			}
 		} else {
-			int nrDims = 1 + arr.getClass().getName().lastIndexOf('[');
-			
+			out += ident(depth);
 			out += "[";
-			for (int i=0; i<nrDims; ++i)
-				out += " ";
 
 			int arrLength = Array.getLength(arr);
 			for (int i=0; i<arrLength; ++i) {
 				if (i != 0) out += ", ";
-				out += toString(Array.get(arr, i));
+				out += toString(Array.get(arr, i), depth+1);
 				if (i < arrLength-1) out += " ";
 			}
 
-			for (int i=0; i<nrDims; ++i)
-				out += " ";
 			out += "]";
-		} 
+			out += ident(depth-1);
+		}
+
 		return out;
 	}
 	
