@@ -2,13 +2,12 @@ package jarrayliterals;
 
 import static jarrayliterals.ArrayShortcuts.*;
 
+import java.util.Arrays;
+
 public class TestArrayShortcuts {
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		Object[] obj = (Object[]) 
+	public static void complexExample() {
+		Object obj =
 		$($(
 				$(1f, 2f), $(3f, 4f), $(5f, 6f), $(7f, 8f)
 		), $(
@@ -33,8 +32,30 @@ public class TestArrayShortcuts {
 				$($($($($($B)))))
 		));
 		
-		
 		System.out.println(ArrayShortcuts.toString(obj));
+	}
+	
+	public static void simpleExample() {
+		Object flat = $( $S(1,2,3,4), $B(2,3), $(true, false), $('c'), $($null), $, $null);
+		Object[][] flat2 = new Object[][]{
+				{(short) 1, (short) 2, (short) 3, (short) 4},
+				{(byte) 2, (byte) 3},
+				{true, false},
+				{'c'},
+				{null},
+				{},
+				null
+		};
+		System.out.println(Arrays.deepToString((Object[]) flat));
+		System.out.println(Arrays.deepToString(flat2));
+	}
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		simpleExample();
+		System.out.println("****************************");
+		complexExample();
 	}
 
 }
