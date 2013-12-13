@@ -35,20 +35,49 @@ public class TestArrayShortcuts {
 		System.out.println(ArrayShortcuts.toString(obj));
 	}
 	
+	
 	public static void simpleExample() {
-		Object flat = $( $S(1,2,3,4), $B(2,3), $(true, false), $('c'), $($null), $, $null);
+		Object[] flat = (Object[])
+			$( $b, $(true, false), $($), $S(1,2,3,4), $B(2,3), $('c'), $($null), $, $null );
+		testTypes(flat);
+
+		System.out.println();
+		
+		Object[] tediousTempVar = new Object[][]{{}};
 		Object[][] flat2 = new Object[][]{
+				{},
+				{true, false},
+				tediousTempVar,
 				{(short) 1, (short) 2, (short) 3, (short) 4},
 				{(byte) 2, (byte) 3},
-				{true, false},
 				{'c'},
 				{null},
 				{},
 				null
 		};
-		System.out.println(Arrays.deepToString((Object[]) flat));
-		System.out.println(Arrays.deepToString(flat2));
+		testTypes(flat2);
 	}
+	
+	private static void testTypes(Object[] arr) {
+		System.out.println(Arrays.deepToString(arr));
+		for (int i=0; i<arr.length; i++) {
+			if (arr[i] != null) {
+				System.out.println(""+i+"th element is typeof "+arr[i].getClass().getSimpleName()+".");
+			} else {
+				System.out.println(""+i+"th element is null.");
+			}
+		}
+		try {
+			testType((Boolean[]) arr[0]);
+			testType((Boolean[]) arr[1]);
+		} catch (ClassCastException e) {
+			System.out.println("Nay :(! Type of array can't be cast Boolean[]!");
+		}
+	}
+	private static void testType(Boolean[] arr) {
+		System.out.println("Yay :)! Type of array can be cast to Boolean[]!");
+	}
+	
 	/**
 	 * @param args
 	 */

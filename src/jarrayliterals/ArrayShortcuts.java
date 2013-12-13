@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Shortcuts for creating arrays for use as test data.
+ * Shortcuts for creating arbitrary arrays (e.g. for parameterized unit tests).
  * <p>
  * This class has an overloaded method {@link ArrayShortcuts#$(Object...) <code><T>$(T...): T[]</code>}. 
  * The method is used for creating an array of a generic element type and expects a non-zero, 
@@ -13,54 +13,31 @@ import java.util.Set;
  * <p>
  * This class has also fields that start with {@linkplain $}.  The fields represent zero-sized 
  * arrays of a specific element type.
+ * <p>
+ * Note that both the methods and fields return boxed wrapper arrays instead of their respective, 
+ * primitive data type arrays.
  * <pre>
  * <code>$null</code> 	<code>null</code>
  * <code>$</code> 	<code>Object[0]</code>
- * <code>$B</code>	<code>byte[0]</code>
- * <code>$S</code>	<code>short[0]</code>
- * <code>$I</code>	<code>int[0]</code>
- * <code>$L</code>	<code>long[0]</code>
- * <code>$F</code>	<code>float[0]</code>
- * <code>$D</code>	<code>double[0]</code>
- * <code>$b</code>	<code>boolean[0]</code>
- * <code>$c</code>	<code>char[0]</code>
+ * <code>$B</code>	<code>Byte[0]</code>
+ * <code>$S</code>	<code>Short[0]</code>
+ * <code>$I</code>	<code>Integer[0]</code>
+ * <code>$L</code>	<code>Long[0]</code>
+ * <code>$F</code>	<code>Float[0]</code>
+ * <code>$D</code>	<code>Double[0]</code>
+ * <code>$b</code>	<code>Boolean[0]</code>
+ * <code>$c</code>	<code>Char[0]</code>
  * </pre>
  * There are also shortcut methods which automatically cast <code>int</code> arguments to 
- * <code>byte</code>s {@link ArrayShortcuts#$B(int...) <code><T>$B(int...): byte[]</code>} or
- * <code>short</code>s {@link ArrayShortcuts#$S(int...) <code><T>$B(int...): byte[]</code>}.
- * These methods should not be used in production code, as they trade performance for
- * brevity.
+ * <code>Byte</code>s {@link ArrayShortcuts#$B(int...) <code><T>$B(int...): Byte[]</code>} or
+ * <code>short</code>s {@link ArrayShortcuts#$S(int...) <code><T>$S(int...): Short[]</code>}.
+ * Be careful that these 2 methods trade performance for brevity.
  * <p>
- * There is also an utility method {@link ArrayShortcuts#toString() toString()} which prints
+ * There is also an utility method {@link ArrayShortcuts#toString() toString} which prints
  * <i>anything</i> (including multidimensional arrays).
  * <p>
- * Example:
- * <pre> <code>
- * Object obj = $($(
- * 	$(1f, 2f), $(3f, 4f), $(5f, 6f), $(7f, 8f)
- * ), $(
- * 	$(100L), $(200L)
- * ), $(
- * 	"a", "B"
- * ), $(
- * 	$($($($($(2d)))))
- * ), $(
- * 	$($(true), $(true, false), $(false, false, false))
- * ), $(
- * 	$('a', 'c')
- * ), $(
- * 	$S(2,3,4), $S(1,5,6,7,8,9,0)
- * ), $(
- * 	$($, $($null))
- * ), $(
- * 	$B(2,5,6,7,8,9), $B(101,199), $B
- * ), $(
- * 	$($($($($($())))))
- * ),  $(
- *	$($($($($($B)))))
- * ));
- * System.out.println(toString(obj));
- * </code> </pre>
+ * Be sure to use {@link ArrayShortcuts#$null $null} instead of the regular <b>null</b>
+ * when nesting arrays.
  * 
  * @author mucaho
  */
@@ -175,15 +152,15 @@ public class ArrayShortcuts {
 
 
 	/**
-	 * Shortcut for returning an array of bytes. All parameters passed to this
-	 * method are returned in an <code>byte[]</code> array.
+	 * Shortcut for returning an array of Bytes. All parameters passed to this
+	 * method are returned in an <code>Byte[]</code> array.
 	 *
 	 * @param params
-	 *            Values to be returned in an <code>byte[]</code> array.
+	 *            Values to be returned in an <code>Byte[]</code> array.
 	 * @return Values passed to this method.
 	 */
-	public static byte[] $B(int... params) {
-		byte[] out = new byte[params.length];
+	public static Byte[] $B(int... params) {
+		Byte[] out = new Byte[params.length];
 		for (int i=0; i<out.length; ++i) {
 			out[i] = (byte) params[i];
 		}
@@ -191,15 +168,15 @@ public class ArrayShortcuts {
 	}
 
 	/**
-	 * Shortcut for returning an array of shorts. All parameters passed to this
-	 * method are returned in an <code>short[]</code> array.
+	 * Shortcut for returning an array of Shorts. All parameters passed to this
+	 * method are returned in an <code>Short[]</code> array.
 	 *
 	 * @param params
-	 *            Values to be returned in an <code>short[]</code> array.
+	 *            Values to be returned in an <code>Short[]</code> array.
 	 * @return Values passed to this method.
 	 */
-	public static short[] $S(int... params) {
-		short[] out = new short[params.length];
+	public static Short[] $S(int... params) {
+		Short[] out = new Short[params.length];
 		for (int i=0; i<out.length; ++i) {
 			out[i] = (short) params[i];
 		}
@@ -209,12 +186,12 @@ public class ArrayShortcuts {
 
 
 	/**
-	 * Shortcut for null.
+	 * Shortcut for null. Use this instead of the regular null when nesting arrays.
 	 */
 	public final static Object $null = null;
 
 	/**
-	 * Shortcut for an empty array of objects.
+	 * Shortcut for an empty <code>Object[0]</code> array.
 	 */
 	public final static Object $ = new Object[0];
 
@@ -228,43 +205,47 @@ public class ArrayShortcuts {
 	}
 
 	/**
-	 * Shortcut for an empty array of bytes.
+	 * Shortcut for an empty <code>Byte[0]</code> array.
+	 * <br>
+	 * Do not confuse with {@link ArrayShortcuts#$b $b}. <code>B</code> stands for "Byte".
 	 */
-	public final static byte[] $B = new byte[0];
+	public final static Byte[] $B = new Byte[0];
 
 	/**
-	 * Shortcut for an empty array of shorts.
+	 * Shortcut for an empty <code>Short[0]</code> array.
 	 */
-	public final static short[] $S = new short[0];
+	public final static Short[] $S = new Short[0];
 
 	/**
-	 * Shortcut for an empty array of integers.
+	 * Shortcut for an empty <code>Integer[0]</code> array.
 	 */
-	public final static int[] $I = new int[0];
+	public final static Integer[] $I = new Integer[0];
 
 	/**
-	 * Shortcut for an empty array of longs.
+	 * Shortcut for an empty <code>Long[0]</code> array.
 	 */
-	public final static long[] $L = new long[0];
+	public final static Long[] $L = new Long[0];
 
 	/**
-	 * Shortcut for an empty array of floats.
+	 * Shortcut for an empty <code>Float[0]</code> array.
 	 */
-	public final static float[] $F = new float[0];
+	public final static Float[] $F = new Float[0];
 
 	/**
-	 * Shortcut for an empty array of doubles.
+	 * Shortcut for an empty <code>Double[0]</code> array.
 	 */
-	public final static double[] $D = new double[0];
+	public final static Double[] $D = new Double[0];
 
 	/**
-	 * Shortcut for an empty array of booleans.
+	 * Shortcut for an empty <code>Boolean[0]</code> array.
+	 * <br>
+	 * Do not confuse with {@link ArrayShortcuts#$B $B}. <code>b</code> stands for "bit".
 	 */
-	public final static boolean[] $b = new boolean[0];
+	public final static Boolean[] $b = new Boolean[0];
 
 	/**
-	 * Shortcut for an empty array of chars.
+	 * Shortcut for an empty <code>Character[0]</code> array.
 	 */
-	public final static char[] $c = new char[0];   
+	public final static Character[] $C = new Character[0];   
 
 }
