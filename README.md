@@ -96,5 +96,8 @@ Benefits:
 
 Misc
 ----
-The class which contains the shortcut methods and the complete example can be found inside the __src__ folder.
-You __import the methods__ by doing a __static import__ of the class `ArrayShortcuts.java`.
+You can find the __JavaDocs__ on the [JArrayLiteral's Github Pages](http://mucaho.github.io/JArrayLiterals/).
+
+You can __use the shortcut methods__ by doing a __static import__ of the class `ArrayShortcuts.java`.
+`ArrayShortcuts.java` and the complete example class `TestArrayShortcuts.java` can be found inside the __src__ folder.
+
