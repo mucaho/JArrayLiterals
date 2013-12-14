@@ -94,10 +94,17 @@ Benefits:
 * Additionally `$`&co allow you to create empty arrays of an arbitrary dimension (like `Object[0][0][0]`). JUnitParam's `$` method would currently return `Object[0]` instead.
 * Take a look at the insertion of the  _3th & 4th_ element. Traditionally you would have to __cast all byte and short__ elements appropriately. JArrayLiterals has an utility method which does that for you.
 
-Misc
-----
-You can find the __JavaDocs__ on the [JArrayLiteral's Github Pages](http://mucaho.github.io/JArrayLiterals/).
+JavaDoc
+-------
+You can find the __docs__ on the [JArrayLiteral's Github Pages](http://mucaho.github.io/JArrayLiterals/).
 
+Source
+------
 You can __use the shortcut methods__ by doing a __static import__ of the class `ArrayShortcuts.java`.
 `ArrayShortcuts.java` and the complete example class `TestArrayShortcuts.java` can be found inside the __src__ folder.
+
+Misc
+----
+__Open issues__ and/or __open pull requests__. Any suggestions are welcome!
+
 
