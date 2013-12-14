@@ -45,30 +45,19 @@ Shortcuts for creating arbitrary arrays (e.g. for parameterized unit tests).
  The method is used for creating an array of a generic element type and expects a non-zero, 
  variable amount of arguments.
  <p>
- This class has also fields that start with $.  The fields represent zero-sized 
+ This class has fields that start with $.  The fields represent zero-sized 
  arrays of a specific element type.
  <p>
  Note that both the methods and fields return boxed wrapper arrays instead of their respective, 
  primitive data type arrays.
- <pre>
- <code>$null</code>     <code>null</code>
- <code>$</code>         <code>Object[0]</code>
- <code>$B</code>        <code>Byte[0]</code>
- <code>$S</code>        <code>Short[0]</code>
- <code>$I</code>        <code>Integer[0]</code>
- <code>$L</code>        <code>Long[0]</code>
- <code>$F</code>        <code>Float[0]</code>
- <code>$D</code>        <code>Double[0]</code>
- <code>$b</code>        <code>Boolean[0]</code>
- <code>$c</code>        <code>Char[0]</code>
- </pre>
+ <p>
  There are also shortcut methods which automatically cast <code>int</code> arguments to 
  <code>Byte</code>s <A HREF="#$B(int...)"><CODE><code><T>$B(int...): Byte[]</code></CODE></A> or
  <code>short</code>s <A HREF="#$S(int...)"><CODE><code><T>$S(int...): Short[]</code></CODE></A>.
  Be careful that these 2 methods trade performance for brevity.
  <p>
- There is also an utility method <CODE>toString</CODE> which prints
- <i>anything</i> (including multidimensional arrays).
+ An utility method <CODE>toString</CODE> which prints
+ <i>anything</i> (including multidimensional arrays) is available.
  <p>
  Be sure to use <A HREF="#$null"><CODE>$null</CODE></A> instead of the regular <b>null</b>
  when nesting arrays.
