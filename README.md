@@ -107,4 +107,6 @@ Misc
 ----
 __Open issues__ and/or __open pull requests__. Any suggestions are welcome!
 
+Copyright 2013 mucaho provided by Apache License 2.0 (see LICENSE and NOTICE).
+
 
