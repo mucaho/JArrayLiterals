@@ -6,7 +6,7 @@ No more `new int[][] { {1,2}, {3,4} }` notations which have more boilerplate cod
 Why not do `$($(1,2), $(3,4))` and make your life easier?   
 
 Why bother? If you write a lot of parameterized unit tests and you hardcode the test parameters, then JArrayLiterals 
-could help you write parameter data in a concise, dynamic and clean way.
+could help you write parameter data in a more concise way.
 If your interested in _"parameterised tests that don't suck"_, check out [JUnitParams](http://code.google.com/p/junitparams/)! The shortcut method of that project actually inspired me to 
 make this project.
 
@@ -88,6 +88,11 @@ Yay :)! Type of array can be cast to Boolean[]!
 8th element is null.
 Nay :(! Type of array can't be cast Boolean[]!
 ```
+Benefits:
+* The first array actually contains elements of the __expected type__. The second does not. This does not concern JUnit or JUnitParams as they convert the test parameters before passing them to the tested method. However, it is a nice feature if you need to use the array directly.
+* Take a look at the insertion of the _2th_ element. As the __element itself is an array__, the dimensions do not match any more. You have to create a temporary variable or call a dummy method that returns the _correct_ dimension object. JUnitParameters has a method _$_ which does this for you (similar to JArrayLiteral's `$`).
+* Additionally `$ and co` allow you to create empty arrays of an arbitrary dimension (like `Object[0][0][0]`). JUnitParam's `$` method would currently return `Object[0]` instead.
+* Take a look at the insertion of the  _3th & 4th_ element. Traditionally you would have to __cast all byte and short__ elements appropriately. JArrayLiterals has an utility method which does that for you.
 
 Misc
 ----
