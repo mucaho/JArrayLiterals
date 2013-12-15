@@ -95,6 +95,10 @@ Benefits:
 * Additionally `$`&co allow you to __create empty arrays of arbitrary dimension__ (like `Object[0][0][0]`). JUnitParam's `$` method would currently return `Object[0]` instead.
 * Take a look at the insertion of the  _3th & 4th_ element. By creating the array traditionally you have to __cast all byte and short__ elements appropriately. JArrayLiterals has an utility method which does that for you.
 
+Caveats:
+* User arrays (that are contained in a variable or generated as a return value of a function) __need to be cast to Object__ before passing to the `$` method, if that array should be interpreted as a single argument, rather than a list of arguments.
+* Creating arrays of mixed super- and subclass types will __not be of the type of the least common ancestor class__. They will be `Object[]` arrays instead. (TODO)
+
 JavaDoc
 -------
 You can find the __docs__ on the [JArrayLiteral's Github Pages](http://mucaho.github.io/JArrayLiterals/).
