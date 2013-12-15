@@ -15,7 +15,7 @@ If your interested, check out the Example and Tests paragraphs below for identif
 
 Example
 -------
-You can find the complete example in _example/jarrayliterals/ArrayShortcutsExample.java_:
+You can find the complete example in [ArrayShortcutsExample](example/jarrayliterals/ArrayShortcutsExample.java):
 ```java
 	public static void simpleExample() {
 		Object[] flat = (Object[])
@@ -101,11 +101,11 @@ You can find the __docs__ on the [JArrayLiteral's Github Pages](http://mucaho.gi
 
 Source
 ------
-You can find the source in _src/jarrayliterals/ArrayShortcuts.java_. To __use the shortcut methods__ you do a __static import__ of the class.
+You can find the source in [ArrayShortcuts](src/jarrayliterals/ArrayShortcuts.java). To __use the shortcut methods__ you do a __static import__ of the class.
 
 Tests
 -----
-You can find the tests in _test/jarrayliterals/ArrayShortcutsTest.java_. There you can see JArrayLiterals used for testing itself with the help of [JUnitParams](http://code.google.com/p/junitparams/)!
+You can find the tests in [ArrayShortcutsTest](test/jarrayliterals/ArrayShortcutsTest.java). There you can see JArrayLiterals used for testing itself with the help of [JUnitParams](http://code.google.com/p/junitparams/)!
 
 Misc
 ----
