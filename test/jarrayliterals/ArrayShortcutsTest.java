@@ -43,7 +43,7 @@ public class ArrayShortcutsTest {
 		), $(
 			$($null, $null), "Void[]", $(Void.class, Void.class)
 		), $(
-			$($($null)), "Void[][]", Void[][].class
+			$($($null)), "Void[][]", $($(Void.class))
 		), $(
 			$($($null, $null)), "Void[][]", $($(Void.class, Void.class))
 		), $(
@@ -59,9 +59,9 @@ public class ArrayShortcutsTest {
 		), $(
 			$b, "Boolean[]", Boolean[].class
 		), $(
-			$(true), "Boolean[]", Boolean[].class
+			$(true), "Boolean[]", $(Boolean.class)
 		), $(
-			$(true, false), "Boolean[]", Boolean[].class
+			$(true, false), "Boolean[]", $(Boolean.class, Boolean.class)
 		), $(
 			$($b), "Boolean[][]", Boolean[][].class
 		), $(
