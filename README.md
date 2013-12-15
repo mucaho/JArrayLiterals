@@ -97,7 +97,7 @@ Benefits:
 
 Caveats:
 * User arrays (that are contained in a variable or generated as a return value of a function) __need to be cast to Object__ before passing to the `$` method, if that array should be interpreted as a single argument, rather than a list of arguments.
-* Creating arrays of mixed super- and subclass types (other than the primitive data types) will __not be of the type of the least common ancestor class__. They will be `Object[]` arrays instead. (TODO)
+* Creating arrays of mixed super- and subclass types will __not be of the type of the least common ancestor class__. They will be `Object[]` arrays instead. (TODO)
 
 JavaDoc
 -------
