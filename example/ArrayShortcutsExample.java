@@ -4,7 +4,7 @@ import static jarrayliterals.ArrayShortcuts.*;
 
 import java.util.Arrays;
 
-public class TestArrayShortcuts {
+public class ArrayShortcutsExample {
 
 	public static void complexExample() {
 		Object obj =
@@ -37,8 +37,8 @@ public class TestArrayShortcuts {
 	
 	
 	public static void simpleExample() {
-		Object[] flat = (Object[])
-			$( $b, $(true, false), $($), $S(1,2,3,4), $B(2,3), $('c'), $($null), $, $null );
+		Object[] flat = (Object[]) 
+		$( $b, $(true, false), $($), $S(1,2,3,4), $B(2,3), $('c'), $($null), $, $null );
 		testTypes(flat);
 
 		System.out.println();
@@ -78,6 +78,7 @@ public class TestArrayShortcuts {
 		System.out.println("Yay :)! Type of array can be cast to Boolean[]!");
 	}
 	
+
 	/**
 	 * @param args
 	 */
