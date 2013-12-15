@@ -10,12 +10,12 @@ could help you write parameter data in a more concise way.
 If your interested in _"parameterised tests that don't suck"_, check out [JUnitParams](http://code.google.com/p/junitparams/)! The shortcut method of that project actually inspired me to 
 make this project.
 
-If your interested, check out the example below for identifiying benefits in using this project.
+If your interested, check out the Example and Tests paragraphs below for identifiying benefits in using this project.
 
 
 Example
 -------
-Example showing the benefits of JArrayLiterals:
+You can find the complete example in _example/jarrayliterals/ArrayShortcutsExample.java_:
 ```java
 	public static void simpleExample() {
 		Object[] flat = (Object[])
@@ -101,8 +101,11 @@ You can find the __docs__ on the [JArrayLiteral's Github Pages](http://mucaho.gi
 
 Source
 ------
-You can __use the shortcut methods__ by doing a __static import__ of the class `ArrayShortcuts.java`.
-`ArrayShortcuts.java` and the complete example class `TestArrayShortcuts.java` can be found inside the __src__ folder.
+You can find the source in _src/jarrayliterals/ArrayShortcuts.java_. To __use the shortcut methods__ you do a __static import__ of the class.
+
+Tests
+-----
+You can find the tests in _test/jarrayliterals/ArrayShortcutsTest.java_. There you can see JArrayLiterals used for testing itself with the help of [JUnitParams](http://code.google.com/p/junitparams/)!
 
 Misc
 ----
