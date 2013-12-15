@@ -91,7 +91,7 @@ Nay :(! Type of array can't be cast Boolean[]!
 Benefits:
 * Compare the __amount of lines__ it takes to create both arrays! Which approach is more __readable and flexible/maintainable__? JUnitParam's shortcut method `$` produces a similar notiation to create arrays concisely.
 * The _first array_ actually contains elements of the __expected type__. The _second_ does not. This does not concern JUnit or JUnitParams as they convert the test parameters before passing them to the tested method. However, it is a nice feature if you need to use the array directly.
-* Take a look at the insertion of the _2th_ element. As the __element itself is an array__, the dimensions do not match any more. You have to create a temporary variable or call a dummy method that returns the _correct_ dimension object. JUnitParameters has a method `$` which does this for you (similar to JArrayLiteral's `$`).
+* Take a look at the insertion of the _2th_ element. As the element itself is an array, the dimensions do not match any more. You have to create a temporary variable or call a dummy method that returns the _correct_ dimension object. JArrayLiteral allows you to create __arrays with correct dimension dynamically__. JUnitParameters has a similar method `$` which does this for you also.
 * Additionally `$`&co allow you to __create empty arrays of arbitrary dimension__ (like `Object[0][0][0]`). JUnitParam's `$` method would currently return `Object[0]` instead.
 * Take a look at the insertion of the  _3th & 4th_ element. By creating the array traditionally you have to __cast all byte and short__ elements appropriately. JArrayLiterals has an utility method which does that for you.
 
