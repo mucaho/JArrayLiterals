@@ -109,7 +109,7 @@ You can find the source in [ArrayShortcuts](src/jarrayliterals/ArrayShortcuts.ja
 
 Tests
 -----
-You can find the tests in [ArrayShortcutsTest](test/jarrayliterals/ArrayShortcutsTest.java). There you can see JArrayLiterals used for testing itself with the help of [JUnitParams](http://code.google.com/p/junitparams/)!
+You can find the tests in [ArrayShortcutsTest](test/jarrayliterals/ArrayShortcutsTest.java). There you can see JArrayLiterals used for __testing itself__ with the help of [JUnitParams](http://code.google.com/p/junitparams/)!
 
 Misc
 ----
