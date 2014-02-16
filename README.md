@@ -2,15 +2,10 @@ JArrayLiterals
 ==============
 
 Shortcut methods for creating arrays using array literals.   
-No more `new int[][] { {1,2}, {3,4} }` notations which have more boilerplate code than actual data!   
-Why not do `$($(1,2), $(3,4))` and make your life easier?
+Instead of `new int[][] { {1,2}, {3,4} }` do `$($(1,2), $(3,4))`.
 
-Why bother? If you write a lot of parameterized unit tests and you hardcode the test parameters, then JArrayLiterals 
-could help you write parameter data in a more concise way.
-If your interested in _"parameterised tests that don't suck"_, check out [JUnitParams](http://code.google.com/p/junitparams/)! The shortcut method of that project actually inspired me to 
-make this project.
-
-If your interested, check out the Example and Tests paragraphs below for identifiying benefits in using this project.
+JArrayLiterals could help you write parameter unit tests data in a more concise way.   
+If your interested in _"parameterised tests that don't suck"_, check out [JUnitParams](http://code.google.com/p/junitparams/)! The shortcut method of that project actually inspired me to make this project.
 
 
 Example
@@ -18,12 +13,18 @@ Example
 You can find the complete example in [ArrayShortcutsExample](example/jarrayliterals/ArrayShortcutsExample.java):
 ```java
 	public static void simpleExample() {
+		/**
+		 * JArrayLiterals approach
+		 */
 		Object[] flat = (Object[])
 			$( $b, $(true, false), $($), $S(1,2,3,4), $B(2,3), $('c'), $($null), $, $null );
 		testTypes(flat);
 
 		System.out.println();
 		
+		/**
+		 * standard approach
+		 */
 		Object[] tediousTempVar = new Object[][]{{}};
 		Object[][] flat2 = new Object[][]{
 				{},
@@ -63,6 +64,7 @@ You can find the complete example in [ArrayShortcutsExample](example/jarrayliter
 
 Gives the output:
 ```
+// JArrayLiterals apporach
 [[], [true, false], [[]], [1, 2, 3, 4], [2, 3], [c], [null], [], null]
 0th element is typeof Boolean[].
 1th element is typeof Boolean[].
@@ -76,6 +78,7 @@ Gives the output:
 Yay :)! Type of array can be cast to Boolean[]!
 Yay :)! Type of array can be cast to Boolean[]!
 
+// standard apporach
 [[], [true, false], [[]], [1, 2, 3, 4], [2, 3], [c], [null], [], null]
 0th element is typeof Object[].
 1th element is typeof Object[].
@@ -89,11 +92,10 @@ Yay :)! Type of array can be cast to Boolean[]!
 Nay :(! Type of array can't be cast Boolean[]!
 ```
 Benefits:
-* Compare the __amount of lines__ it takes to create both arrays! Which approach is more __readable and flexible/maintainable__?
-* The _first array_ actually contains elements of the __expected type__. The _second_ does not. (However that does not matter for parameterized unit tests).
-* Take a look at the insertion of the _2th_ element. As the element itself is an array, the dimensions do not match any more. You have to create a temporary variable or call a dummy method that returns the _correct_ dimension object. JArrayLiteral allows you to create __arrays with correct dimension dynamically__.
-* Additionally `$` allows you to __create arrays of arbitrary dimension__ (like `Object[0][0][0]`).
-* Take a look at the insertion of the  _3th & 4th_ element. By creating the array traditionally you have to __cast all byte and short__ elements appropriately. JArrayLiterals has an utility method which does that for you.
+* __readable and flexible__
+* elements are of the __expected type__
+* create __arrays with correct dimension dynamically__
+* utility methods that __cast all bytes or shorts__ 
 
 Caveats:
 * User arrays (that are contained in a variable or generated as a return value of a function) __need to be cast to Object__ before passing to the `$` method, if that array should be interpreted as a single argument, rather than a list of arguments.
